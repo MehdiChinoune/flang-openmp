@@ -15,7 +15,7 @@ jobs:
 
       - name: Install packages
         run: |
-          sudo dnf install -y flang cmake ninja-build
+          sudo dnf install -y flang lld ld cmake ninja-build
 
       - name: Configure
         run: |
