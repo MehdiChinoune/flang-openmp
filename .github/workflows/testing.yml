@@ -1,0 +1,30 @@
+name: Test flang+openmp on Fedora
+
+on:
+  push:
+
+jobs:
+  GNU:
+    name: flang+openmp on Fedora
+    runs-on: ubuntu-24.04
+    container: fedora:rawhide
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install packages
+        run: |
+          sudo dnf install -y flang cmake ninja-build
+
+      - name: Configure
+        run: |
+          cmake -Bbuild
+
+      - name: Build
+        run: |
+          cmake --build build
+
+      - name: Run
+        run: |
+          ./main
